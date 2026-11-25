@@ -24,6 +24,7 @@ class _AddExerciseScreenState extends State<AddExerciseScreen> {
   final TextEditingController _repsController = TextEditingController();
 
   Exercise? _selected;
+  bool _guardando = false;
 
   @override
   void initState() {
@@ -76,7 +77,7 @@ class _AddExerciseScreenState extends State<AddExerciseScreen> {
     return value == null || value <= 0 ? null : value;
   }
 
-  void _add() {
+  Future<void> _add() async {
     final name = _query;
     final series = _positiveInt(_seriesController);
     final reps = _positiveInt(_repsController);
@@ -91,11 +92,27 @@ class _AddExerciseScreenState extends State<AddExerciseScreen> {
       );
       return;
     }
-    RoutinesService.add(
-      widget.dayName,
-      RoutineExercise(name: name, series: series, reps: reps, image: _image),
-    );
-    Navigator.pop(context);
+
+    setState(() => _guardando = true);
+    try {
+      await RoutinesService.addExercise(
+        widget.dayName,
+        RoutineExercise(name: name, series: series, reps: reps, image: _image),
+      );
+      if (mounted) Navigator.pop(context);
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('No se pudo guardar la rutina: $e'),
+          backgroundColor: kPrimaryColor,
+        ),
+      );
+    } finally {
+      if (mounted) {
+        setState(() => _guardando = false);
+      }
+    }
   }
 
   InputDecoration _inputDecoration(String label) {
@@ -237,8 +254,8 @@ class _AddExerciseScreenState extends State<AddExerciseScreen> {
             ),
             const SizedBox(height: 25),
             CustomButton(
-              text: 'Agregar',
-              onPressed: _add,
+              text: _guardando ? 'Guardando...' : 'Agregar',
+              onPressed: _guardando ? () {} : () => _add(),
             ),
             const SizedBox(height: 30),
           ],

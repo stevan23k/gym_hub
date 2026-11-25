@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "5058083123",
+    "project_id": "gymhub-8c23e",
+    "storage_bucket": "gymhub-8c23e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5058083123:android:a9d91796f89b478961a646",
+        "android_client_info": {
+          "package_name": "com.example.gym_hub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3WbDx-VdBnxsZ8XeibFAURnOSvixVJ0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

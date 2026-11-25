@@ -1,33 +1,25 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_lucide/flutter_lucide.dart';
+import 'package:gym_hub/constants.dart';
 
-class NavBar extends StatefulWidget {
-  const NavBar({super.key});
+class NavBar extends StatelessWidget {
+  const NavBar({super.key, required this.currentIndex, required this.onTap});
 
-  @override
-  State<NavBar> createState() => _NavBarState();
-}
-
-class _NavBarState extends State<NavBar> {
-  int _currentPage = 0;
-
-  void _navigate(int index) {
-    setState(() {
-      _currentPage = index;
-    });
-  }
+  final int currentIndex;
+  final ValueChanged<int> onTap;
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: _currentPage,
-      onTap: _navigate,
-      items: [
-        BottomNavigationBarItem(icon: Icon(LucideIcons.house), label: "Inicio"),
+      currentIndex: currentIndex,
+      onTap: onTap,
+      selectedItemColor: kPrimaryColor,
+      unselectedItemColor: Colors.grey,
+      items: const [
+        BottomNavigationBarItem(icon: Icon(LucideIcons.house), label: 'Inicio'),
         BottomNavigationBarItem(
           icon: Icon(LucideIcons.calendar),
-          label: "Calendario",
+          label: 'Calendario',
         ),
       ],
     );

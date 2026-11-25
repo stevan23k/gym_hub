@@ -1,0 +1,28 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "gymhub-8c23e",
+          "appId": "1:5058083123:android:a9d91796f89b478961a646",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "gymhub-8c23e",
+          "configurations": {
+            "android": "1:5058083123:android:a9d91796f89b478961a646",
+            "ios": "1:5058083123:ios:86d9fcb8c671e66b61a646",
+            "macos": "1:5058083123:ios:86d9fcb8c671e66b61a646",
+            "web": "1:5058083123:web:25097319392b878d61a646",
+            "windows": "1:5058083123:web:22e3d786c504d1c461a646"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  }
+}

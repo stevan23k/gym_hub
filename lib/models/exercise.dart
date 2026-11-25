@@ -55,8 +55,9 @@ class Exercise {
       secondaryMuscles: (json['secondary_muscles'] as List? ?? const [])
           .map((m) => Muscle.fromJson(m))
           .toList(),
-      goals:
-          (json['goals'] as List).map((g) => ExerciseGoal.fromJson(g)).toList(),
+      goals: (json['goals'] as List)
+          .map((g) => ExerciseGoal.fromJson(g))
+          .toList(),
       tags: List<String>.from(json['tags'] as List? ?? const []),
       variationGroup: json['variation_group'] as String?,
       isUnilateral: json['is_unilateral'] as bool,
@@ -108,36 +109,36 @@ class Exercise {
   String? get equipmentAsset => equipment?.imageAsset;
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'name_en': nameEn,
-        'name_de': nameDe,
-        'name_es': nameEs,
-        'description_en': descriptionEn,
-        'description_de': descriptionDe,
-        'description_es': descriptionEs,
-        'category': category.toJson(),
-        'force_type': forceType.toJson(),
-        'mechanic': mechanic.toJson(),
-        'difficulty': difficulty.toJson(),
-        if (equipment != null) 'equipment': equipment!.toJson(),
-        'body_part': bodyPart.toJson(),
-        'primary_muscles': primaryMuscles.map((m) => m.toJson()).toList(),
-        if (secondaryMuscles.isNotEmpty)
-          'secondary_muscles': secondaryMuscles.map((m) => m.toJson()).toList(),
-        'goals': goals.map((g) => g.toJson()).toList(),
-        if (tags.isNotEmpty) 'tags': tags,
-        if (variationGroup != null) 'variation_group': variationGroup,
-        'is_unilateral': isUnilateral,
-        'is_bodyweight': isBodyweight,
-        'instructions_en': instructionsEn,
-        'instructions_de': instructionsDe,
-        'instructions_es': instructionsEs,
-        'tips_en': tipsEn,
-        'tips_de': tipsDe,
-        'tips_es': tipsEs,
-        'met': met,
-        'images': images.toJson(),
-      };
+    'id': id,
+    'name_en': nameEn,
+    'name_de': nameDe,
+    'name_es': nameEs,
+    'description_en': descriptionEn,
+    'description_de': descriptionDe,
+    'description_es': descriptionEs,
+    'category': category.toJson(),
+    'force_type': forceType.toJson(),
+    'mechanic': mechanic.toJson(),
+    'difficulty': difficulty.toJson(),
+    if (equipment != null) 'equipment': equipment!.toJson(),
+    'body_part': bodyPart.toJson(),
+    'primary_muscles': primaryMuscles.map((m) => m.toJson()).toList(),
+    if (secondaryMuscles.isNotEmpty)
+      'secondary_muscles': secondaryMuscles.map((m) => m.toJson()).toList(),
+    'goals': goals.map((g) => g.toJson()).toList(),
+    if (tags.isNotEmpty) 'tags': tags,
+    if (variationGroup != null) 'variation_group': variationGroup,
+    'is_unilateral': isUnilateral,
+    'is_bodyweight': isBodyweight,
+    'instructions_en': instructionsEn,
+    'instructions_de': instructionsDe,
+    'instructions_es': instructionsEs,
+    'tips_en': tipsEn,
+    'tips_de': tipsDe,
+    'tips_es': tipsEs,
+    'met': met,
+    'images': images.toJson(),
+  };
 }
 
 class ExerciseImages {
@@ -161,12 +162,12 @@ class ExerciseImages {
   String? get mainAsset => _asset(main);
 
   Map<String, dynamic> toJson() => {
-        'flat': {
-          if (start != null) 'start': start,
-          if (peak != null) 'peak': peak,
-          if (main != null) 'main': main,
-        },
-      };
+    'flat': {
+      if (start != null) 'start': start,
+      if (peak != null) 'peak': peak,
+      if (main != null) 'main': main,
+    },
+  };
 
   static String? _asset(String? path) => path == null ? null : 'assets/$path';
 }
@@ -205,12 +206,12 @@ class ExerciseDataset {
   final List<Exercise> exercises;
 
   Map<String, dynamic> toJson() => {
-        'name': name,
-        'homepage': homepage,
-        'license': license,
-        'schema_version': schemaVersion,
-        'count': count,
-        'note': note,
-        'exercises': exercises.map((e) => e.toJson()).toList(),
-      };
+    'name': name,
+    'homepage': homepage,
+    'license': license,
+    'schema_version': schemaVersion,
+    'count': count,
+    'note': note,
+    'exercises': exercises.map((e) => e.toJson()).toList(),
+  };
 }

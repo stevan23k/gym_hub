@@ -1,0 +1,19 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    // Rutinas de cada día del usuario.
+    match /users/{userId}/routines/{day} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // Historial de ejercicios completados por fecha.
+    match /users/{userId}/history/{date} {
+      allow read, write: if isOwner(userId);
+    }
+  }
+}

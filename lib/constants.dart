@@ -6,3 +6,13 @@ const textColor = Color(0xFFFFFFFF);
 const backgroundColor = Color(0xFFF9F8FD);
 
 const backgroundCard = Color(0XFFFE6E78);
+
+const kDiasSemana = [
+  'Lunes',
+  'Martes',
+  'Miércoles',
+  'Jueves',
+  'Viernes',
+  'Sábado',
+  'Domingo',
+];

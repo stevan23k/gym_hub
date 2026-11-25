@@ -5,6 +5,7 @@ import '../../widgets/DayCards.dart';
 import '../day_banner.dart';
 
 import 'package:flutter/material.dart';
+import 'package:gym_hub/constants.dart';
 import 'package:intl/intl.dart';
 
 class Body extends StatefulWidget {
@@ -54,15 +55,7 @@ class _BodyState extends State<Body> {
   }
 }
 
-const _diasSemana = [
-  'Lunes',
-  'Martes',
-  'Miércoles',
-  'Jueves',
-  'Viernes',
-  'Sábado',
-  'Domingo',
-];
+const _diasSemana = kDiasSemana;
 
 class ContainersMain extends StatefulWidget {
   const ContainersMain({super.key, required this.weekday});

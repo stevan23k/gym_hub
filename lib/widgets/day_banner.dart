@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:gym_hub/constants.dart';
+import 'package:gym_hub/services/streak_service.dart';
 import 'package:intl/intl.dart';
 
 class DayBanner extends StatefulWidget {
@@ -16,8 +17,6 @@ class DayBanner extends StatefulWidget {
 }
 
 class _DayBannerState extends State<DayBanner> {
-  static const int _streak = 0;
-
   late Timer _timer;
   late String _hour;
 
@@ -76,9 +75,19 @@ class _DayBannerState extends State<DayBanner> {
                 const SizedBox(width: 20),
                 const Icon(LucideIcons.flame, color: Colors.yellow, size: 24),
                 const SizedBox(width: 6),
-                Text(
-                  '$_streak',
-                  style: const TextStyle(color: Colors.yellow, fontSize: 18),
+                StreamBuilder<int>(
+                  stream: StreakService.watchStreak(),
+                  builder: (context, snapshot) {
+                    final racha = snapshot.data ?? 0;
+                    return Text(
+                      '$racha',
+                      style: const TextStyle(
+                        color: Colors.yellow,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
